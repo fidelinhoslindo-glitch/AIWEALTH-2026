@@ -11,9 +11,11 @@ import PreCheckout from './pages/PreCheckout';
 import Checkout from './pages/Checkout';
 import PixPending from './pages/PixPending';
 import Success from './pages/Success';
-import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import CourseViewer from './pages/CourseViewer';
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
+import { Link } from 'react-router-dom';
 
 // Scroll to top on navigation
 function ScrollToTop() {
@@ -59,11 +61,30 @@ function GlobalLayout({ children }) {
         )}
         
         {children}
-        
+        <Footer />
       </div>
     </>
   );
 }
+
+const Footer = () => (
+  <footer className="main-footer">
+    <div className="footer-content">
+      <div className="footer-logo">AI WEALTH<span>2026</span></div>
+      <div className="footer-links">
+        <Link to="/privacidade" className="link">Política de Privacidade</Link>
+        <Link to="/termos" className="link">Termos de Uso</Link>
+        <a href="mailto:suporte@aiwealth.online">Suporte</a>
+      </div>
+      <div className="footer-copyright">
+        © 2026 AI Wealth - Todos os direitos reservados.
+      </div>
+      <div className="footer-disclaimer">
+        ESTE SITE NÃO É DO FACEBOOK: Este site não faz parte do site do Facebook ou do Facebook Inc. Além disso, este site NÃO é endossado pelo Facebook de nenhuma maneira. FACEBOOK é uma marca comercial da FACEBOOK, Inc.
+      </div>
+    </div>
+  </footer>
+);
 
 export default function App() {
   return (
@@ -83,6 +104,8 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/course" element={<CourseViewer />} />
+            <Route path="/termos" element={<Terms />} />
+            <Route path="/privacidade" element={<Privacy />} />
           </Routes>
         </GlobalLayout>
       </BrowserRouter>
