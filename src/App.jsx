@@ -48,7 +48,7 @@ function GlobalLayout({ children }) {
   return (
     <>
       <div className="bg-mesh"></div>
-      <div className="container" style={{ paddingTop: '2rem' }}>
+      <div className="container" style={{ paddingTop: '2rem', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         {showHeader && (
           <div className="checkout-header reveal">
             <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
@@ -61,7 +61,9 @@ function GlobalLayout({ children }) {
           </div>
         )}
         
-        {children}
+        <div className="main-content" style={{ flex: 1 }}>
+          {children}
+        </div>
         <Footer />
       </div>
     </>
