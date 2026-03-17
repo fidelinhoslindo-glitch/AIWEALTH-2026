@@ -172,7 +172,7 @@ app.post('/webhook', async (req, res) => {
                        </div>
 
                        <p style="color: #cccccc;">Use esta chave para fazer login no painel e acessar seus cursos.</p>
-                       <a href="http://localhost:5173/login" style="display: inline-block; background: #00ffa3; color: #000; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 20px;">ACESSAR PAINEL AGORA</a>
+                       <a href="https://www.aiwealth.online/login" style="display: inline-block; background: #00ffa3; color: #000; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 20px;">ACESSAR PAINEL AGORA</a>
                        
                        <hr style="border: 0; border-top: 1px solid #222; margin: 40px 0;">
                        <p style="font-size: 12px; color: #555;">Este é um e-mail automático. Se precisar de ajuda, entre em contato com o suporte oficial.</p>
