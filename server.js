@@ -206,7 +206,11 @@ app.post('/webhook', async (req, res) => {
     }
   }
 
-  // --- ADMIN ROUTES ---
+  // Sempre retorne 200 OK para o EvoPay saber que recebemos
+  res.sendStatus(200);
+});
+
+// --- ADMIN ROUTES ---
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'wealth2026';
 
@@ -277,9 +281,6 @@ app.get('/admin/orders', checkAdmin, async (req, res) => {
   }
 });
 
-// Sempre retorne 200 OK para o EvoPay saber que recebemos
-res.sendStatus(200);
-});
 
 app.listen(port, () => {
   console.log('=========================================');
