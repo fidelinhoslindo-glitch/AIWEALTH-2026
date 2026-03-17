@@ -5,7 +5,7 @@ export const PRODUCTS = {
     id: 'ebook_ia_renda',
     name: 'E-book: Renda Extra com IA',
     description: 'Estratégias para gerar renda adicional usando ferramentas de IA em 2026.',
-    price: 19.90,
+    price: 1.00,
     oldPrice: 197.90
   },
   LANCAMENTOS: {
