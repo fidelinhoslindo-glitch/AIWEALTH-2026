@@ -208,7 +208,7 @@ app.post('/webhook', async (req, res) => {
 
   // --- ADMIN ROUTES ---
 
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'wealth2026'; // Usuário define no .env
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'wealth2026';
 
 // Middleware de Segurança Admin
 const checkAdmin = (req, res, next) => {
