@@ -206,8 +206,79 @@ app.post('/webhook', async (req, res) => {
     }
   }
 
-  // Sempre retorne 200 OK para o EvoPay saber que recebemos
-  res.sendStatus(200);
+  // --- ADMIN ROUTES ---
+
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'wealth2026'; // Usuário define no .env
+
+// Middleware de Segurança Admin
+const checkAdmin = (req, res, next) => {
+  const pass = req.headers['x-admin-pass'];
+  if (pass === ADMIN_PASSWORD) {
+    next();
+  } else {
+    res.status(401).json({ error: 'Acesso negado. Senha admin incorreta.' });
+  }
+};
+
+// Login Admin
+app.post('/admin/login', (req, res) => {
+  const { password } = req.body;
+  if (password === ADMIN_PASSWORD) {
+    res.json({ success: true });
+  } else {
+    res.status(401).json({ error: 'Senha incorreta' });
+  }
+});
+
+// Stats Gerais
+app.get('/admin/stats', checkAdmin, async (req, res) => {
+  try {
+    const { data: users, count: userCount } = await supabase.from('users').select('*', { count: 'exact' });
+    const { data: orders } = await supabase.from('orders').select('*').eq('status', 'COMPLETED');
+    
+    const totalRevenue = orders ? orders.reduce((sum, o) => sum + (o.amount || 0), 0) : 0;
+    const totalSales = orders ? orders.length : 0;
+
+    res.json({
+      totalLeads: userCount || 0,
+      totalSales,
+      totalRevenue: totalRevenue.toFixed(2)
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Lista de Leads
+app.get('/admin/leads', checkAdmin, async (req, res) => {
+  try {
+    const { data, error } = await supabase
+      .from('users')
+      .select('*')
+      .order('created_at', { ascending: false });
+    if (error) throw error;
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Lista de Pedidos
+app.get('/admin/orders', checkAdmin, async (req, res) => {
+  try {
+    const { data, error } = await supabase
+      .from('orders')
+      .select('*')
+      .order('created_at', { ascending: false });
+    if (error) throw error;
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Sempre retorne 200 OK para o EvoPay saber que recebemos
+res.sendStatus(200);
 });
 
 app.listen(port, () => {

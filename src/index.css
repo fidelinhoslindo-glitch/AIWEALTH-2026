@@ -1111,3 +1111,41 @@ h1 {
   line-height: 1.6;
 }
 
+/* Admin Dashboard Styles */
+.admin-content-area {
+  margin-top: 2rem;
+  animation: revealUp 0.8s ease forwards;
+}
+
+.admin-content-area table {
+  width: 100%;
+  border-spacing: 0;
+  color: var(--text);
+}
+
+.admin-content-area th {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.75rem;
+  opacity: 0.8;
+  border-bottom: 2px solid var(--glass-border);
+}
+
+.admin-content-area tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+@media (max-width: 768px) {
+  .dash-welcome-banner {
+    flex-direction: column;
+    padding: 2rem;
+    text-align: center;
+  }
+  .welcome-stats {
+    flex-direction: column;
+    width: 100%;
+  }
+  .admin-content-area {
+    overflow-x: auto;
+  }
+}

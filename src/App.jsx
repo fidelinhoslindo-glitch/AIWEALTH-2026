@@ -16,6 +16,8 @@ import Dashboard from './pages/Dashboard';
 import CourseViewer from './pages/CourseViewer';
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
+import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
 import { Link } from 'react-router-dom';
 
 // Scroll to top on navigation
@@ -109,6 +111,8 @@ export default function App() {
             <Route path="/course" element={<CourseViewer />} />
             <Route path="/termos" element={<Terms />} />
             <Route path="/privacidade" element={<Privacy />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
           </Routes>
         </GlobalLayout>
       </BrowserRouter>
