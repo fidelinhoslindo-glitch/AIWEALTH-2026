@@ -11,6 +11,7 @@ import PreCheckout from './pages/PreCheckout';
 import Checkout from './pages/Checkout';
 import PixPending from './pages/PixPending';
 import Success from './pages/Success';
+import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import CourseViewer from './pages/CourseViewer';
 import Terms from './pages/Terms';
