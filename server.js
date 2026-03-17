@@ -10,6 +10,9 @@ dotenv.config();
 const app = express();
 const port = 3001;
 
+// WEBHOOK CONFIG (Produção vs Local)
+const WEBHOOK_URL = process.env.WEBHOOK_URL || 'http://localhost:3001/webhook';
+
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -49,7 +52,7 @@ app.post('/create_pix', async (req, res) => {
       },
       body: JSON.stringify({
         amount: parseFloat(amount),
-        callbackUrl: 'http://localhost:3001/webhook',
+        callbackUrl: WEBHOOK_URL,
         payerName: payerName || '',
         payerEmail: payerEmail || ''
       })

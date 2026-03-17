@@ -4,6 +4,9 @@ import { PRODUCTS } from '../data/products';
 const AppContext = createContext(null);
 export const useApp = () => useContext(AppContext);
 
+// API URL (Produção vs Local)
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+
 // localStorage helpers
 const loadState = (key, fallback) => {
   try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; }
@@ -49,7 +52,7 @@ export function AppProvider({ children }) {
     const description = includeKit ? `${selectedProduct.name} + Kit Master 2026` : selectedProduct.name;
     
     try {
-      const response = await fetch('http://localhost:3001/create_pix', {
+      const response = await fetch(`${API_URL}/create_pix`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -100,7 +103,7 @@ export function AppProvider({ children }) {
     if (pixPollingId) clearInterval(pixPollingId);
     const interval = setInterval(async () => {
       try {
-        const res = await fetch(`http://localhost:3001/check_pix/${transactionId}`);
+        const res = await fetch(`${API_URL}/check_pix/${transactionId}`);
         const data = await res.json();
         if (data.status === 'COMPLETED') {
           clearInterval(interval);
@@ -116,7 +119,7 @@ export function AppProvider({ children }) {
   const checkPaymentManually = async (navigate) => {
     if (!pixData?.id) return;
     try {
-      const res = await fetch(`http://localhost:3001/check_pix/${pixData.id}`);
+      const res = await fetch(`${API_URL}/check_pix/${pixData.id}`);
       const data = await res.json();
       if (data.status === 'COMPLETED') {
         if (pixPollingId) clearInterval(pixPollingId);
