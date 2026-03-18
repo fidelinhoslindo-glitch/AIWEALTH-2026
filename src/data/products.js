@@ -5,7 +5,7 @@ export const PRODUCTS = {
     id: 'ebook_ia_renda',
     name: 'E-book: Renda Extra com IA',
     description: 'Estratégias para gerar renda adicional usando ferramentas de IA em 2026.',
-    price: 1.00,
+    price: 19.90,
     oldPrice: 197.90
   },
   LANCAMENTOS: {
@@ -33,7 +33,7 @@ export const PRODUCTS = {
     id: 'kit_master_ia',
     name: 'Kit Master Wealth 2026',
     description: 'Acesso completo aos 4 e-books + Bônus exclusivos de escala.',
-    price: 47.00,
+    price: 27.10,
     oldPrice: 2497.00
   }
 };

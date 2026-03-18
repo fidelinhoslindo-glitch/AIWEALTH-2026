@@ -23,16 +23,6 @@ export default function CourseViewer() {
   const data = COURSE_DATA[viewingCourseId];
   const productInfo = Object.values(PRODUCTS).find(p => p.id === viewingCourseId) || { name: 'Curso', description: '' };
 
-  const handleDownload = () => {
-    const filePath = `/assets/${data.folder}/${data.pdf}`;
-    const link = document.createElement('a');
-    link.href = filePath;
-    link.download = data.pdf;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
     <div className="course-v2 reveal">
       <button className="cv-back-btn" onClick={() => { setViewingCourseId(null); navigate('/dashboard'); }}>
@@ -40,7 +30,7 @@ export default function CourseViewer() {
       </button>
 
       <div className="cv-hero">
-        <img src={`/assets/${data.folder}/${data.logo}`} alt={productInfo.name} className="cv-hero-img" />
+        <img src={`/cursos/${data.folder}/${data.logo}`} alt={productInfo.name} className="cv-hero-img" />
         <div>
           <span style={{ background: 'var(--primary)', color: '#000', padding: '4px 10px', borderRadius: '6px', fontSize: '0.7rem', fontWeight: '900', letterSpacing: '1px' }}>CONTEÚDO LIBERADO</span>
           <h1 className="cv-hero-title">{productInfo.name}</h1>
@@ -58,9 +48,16 @@ export default function CourseViewer() {
           <h4>Material de Apoio Completo</h4>
           <p>Baixe o arquivo original para ler offline no seu celular ou computador.</p>
         </div>
-        <button className="cv-download-btn" onClick={handleDownload}>
+        <a 
+          href={`/cursos/${data.folder}/${data.pdf}`} 
+          download 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="cv-download-btn" 
+          style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        >
           FAZER DOWNLOAD {viewingCourseId === 'kit_master_ia' ? 'DO ZIP' : 'DO PDF'}
-        </button>
+        </a>
       </div>
 
       <h3 className="cv-section-title">Conteúdo Passo a Passo</h3>

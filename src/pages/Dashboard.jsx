@@ -83,7 +83,7 @@ export default function Dashboard() {
           return (
             <div key={id} className={`dash-course-card ${!isUnlocked ? 'locked' : ''}`}>
               <div className="dash-course-thumb">
-                <img src={`/assets/${data.folder}/${data.logo}`} alt={productInfo.name} />
+                <img src={`/cursos/${data.folder}/${data.logo}`} alt={productInfo.name} />
                 {!isUnlocked && (
                   <div className="dash-lock-overlay">
                     <span className="dash-lock-icon">🔒</span>

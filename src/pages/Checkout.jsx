@@ -55,8 +55,8 @@ export default function Checkout() {
               Leve todos os <strong style={{ color: '#fff' }}>4 e-books</strong> + bônus exclusivos de escala por apenas:
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingLeft: '3rem' }}>
-              <span style={{ fontSize: '0.85rem', textDecoration: 'line-through', opacity: 0.4 }}>R$ 197,00</span>
-              <span style={{ fontSize: '1.6rem', fontWeight: '900', color: 'var(--primary)' }}>+ R$ 27,10</span>
+              <span style={{ fontSize: '0.85rem', textDecoration: 'line-through', opacity: 0.4 }}>R$ {PRODUCTS.KIT_MASTER.oldPrice.toFixed(2).replace('.',',')}</span>
+              <span style={{ fontSize: '1.6rem', fontWeight: '900', color: 'var(--primary)' }}>+ R$ {PRODUCTS.KIT_MASTER.price.toFixed(2).replace('.',',')}</span>
             </div>
           </div>
         )}
@@ -64,7 +64,7 @@ export default function Checkout() {
         <div style={{ color: 'var(--text-dim)', fontSize: '0.9rem', marginTop: '1.5rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.8rem' }}><span>{selectedProduct.name}</span> <span>R$ {selectedProduct.price.toFixed(2).replace('.',',')}</span></div>
           {includeKit && selectedProduct.id !== PRODUCTS.KIT_MASTER.id && (
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.8rem', color: 'var(--primary)' }}><span>+ Kit Master Wealth 2026</span> <span>R$ 27,10</span></div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.8rem', color: 'var(--primary)' }}><span>+ Kit Master Wealth 2026</span> <span>R$ {PRODUCTS.KIT_MASTER.price.toFixed(2).replace('.',',')}</span></div>
           )}
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.8rem' }}><span>VAT / Tax</span> <span>R$ 0,00</span></div>
           

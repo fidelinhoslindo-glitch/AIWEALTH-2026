@@ -43,7 +43,7 @@ export function AppProvider({ children }) {
   useEffect(() => { saveState('unlockedCourses', unlockedCourses); }, [unlockedCourses]);
 
   // Checkout total
-  const checkoutTotal = includeKit ? (selectedProduct.price + 27.10) : selectedProduct.price;
+  const checkoutTotal = includeKit ? (selectedProduct.price + PRODUCTS.KIT_MASTER.price) : selectedProduct.price;
 
   // EvoPay: Create PIX
   const onEvoPay = async (navigate) => {
